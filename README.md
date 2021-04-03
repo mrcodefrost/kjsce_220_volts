@@ -1,2 +1,2 @@
 # kjsce_220_volts
- 
+ This is a Hardware and Software integrated project that stresses on providing post rash assistance to the passengers of a vehicle. The hardware part consists of a Bluetooth module, along with the microcontroller that is connected to the impact sensors of the vehicle, which is paired with the mobile phone of the passenger. As soon as the sensors detect a collision, an alert message is sent to the concerned authorities and emergency services
