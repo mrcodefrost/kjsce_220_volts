@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red[600],
+        primaryColor: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: WelcomeScreen(),

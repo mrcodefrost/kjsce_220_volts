@@ -7,12 +7,30 @@ class WelcomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Welcome Screen'),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          TextField(),
-          TextField(),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 10.0),
+            Container(
+              color: Colors.red,
+              height: 40.0,
+              width: double.infinity,
+              child: Center(child: Text('Enter your details below')),
+            ),
+            SizedBox(height: 10.0),
+            TextField(),
+            SizedBox(height: 10.0),
+            TextField(),
+            SizedBox(height: 10.0),
+            TextField(),
+            SizedBox(height: 10.0),
+            TextField(),
+            SizedBox(height: 10.0),
+            TextField(),
+            SizedBox(height: 10.0),
+            TextField(),
+          ],
+        ),
       ),
     );
   }
