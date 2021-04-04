@@ -8,7 +8,7 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="kjsce_220_volts"
+        android:label="C.A.R.S"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

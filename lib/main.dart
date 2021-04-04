@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kjsce_220_volts/screens/kj_form.dart';
+import 'package:kjsce_220_volts/screens/kj_welcome_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
         textTheme: GoogleFonts.muktaVaaniTextTheme(),
       ),
-      home: FormScreen(),
+      home: WelcomeScreen(),
     );
   }
 }
