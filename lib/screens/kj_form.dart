@@ -13,7 +13,6 @@ class FormScreen extends StatefulWidget {
 class _FormScreenState extends State<FormScreen> {
   final _preferencesService = PreferencesService();
   String _platformVersion = 'Unknown';
-  Location _location = Location();
 
   final _nameController = TextEditingController();
   final _bloodGroupController = TextEditingController();
@@ -25,12 +24,25 @@ class _FormScreenState extends State<FormScreen> {
   final _contactTwoController = TextEditingController();
   final _contactThreeController = TextEditingController();
 
+  String latitudeData = "";
+  String longitudeData = "";
+
   @override
   void initState() {
     _populateFields();
     initPlatformState();
-    _location.getCurrentLocation();
+    getCurrentLocation();
     super.initState();
+  }
+
+  getCurrentLocation() async {
+    final geoposition = await Geolocator().getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.bestForNavigation);
+
+    setState(() {
+      latitudeData = '${geoposition.latitude}';
+      longitudeData = '${geoposition.longitude}';
+    });
   }
 
   Future<void> initPlatformState() async {
@@ -219,12 +231,23 @@ class _FormScreenState extends State<FormScreen> {
                 color: Colors.red,
                 onPressed: () {
                   FlutterOpenWhatsapp.sendSingleMessage(
-                      '91${_contactOneController.text}', _nameController.text);
+                      '91${_contactOneController.text}',
+                      'HELP! \n${_nameController.text} just had a car accident. \n'
+                          'Blood Group : ${_bloodGroupController.text} \nCar : ${_vehicleColorController.text} ${_vehicleBrandController.text} ${_vehicleModelController.text} \n'
+                          'Address: ${_addressController.text}\n'
+                          'coordinates: latitude = ${latitudeData} \n longitude = ${longitudeData}');
                   FlutterOpenWhatsapp.sendSingleMessage(
-                      '91${_contactTwoController.text}', _nameController.text);
+                      '91${_contactTwoController.text}',
+                      'HELP! \n${_nameController.text} just had a car accident. \n'
+                          'Blood Group : ${_bloodGroupController.text} \nCar : ${_vehicleColorController.text} ${_vehicleBrandController.text} ${_vehicleModelController.text} \n'
+                          'Address: ${_addressController.text}\n'
+                          'coordinates: latitude = ${latitudeData} \n longitude = ${longitudeData}');
                   FlutterOpenWhatsapp.sendSingleMessage(
                       '91${_contactThreeController.text}',
-                      _nameController.text);
+                      'HELP! \n${_nameController.text} just had a car accident. \n'
+                          'Blood Group : ${_bloodGroupController.text} \nCar : ${_vehicleColorController.text} ${_vehicleBrandController.text} ${_vehicleModelController.text} \n'
+                          'Address: ${_addressController.text}\n'
+                          'coordinates: latitude = ${latitudeData} \n longitude = ${longitudeData}');
                 }),
           ],
         ),
@@ -279,22 +302,5 @@ class RoundedButton extends StatelessWidget {
         ),
       ),
     );
-  }
-}
-
-class Location {
-  double latitude;
-  double longitude;
-
-  Future<void> getCurrentLocation() async {
-    try {
-      Position position = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-
-      latitude = position.latitude;
-      longitude = position.longitude;
-    } catch (e) {
-      print(e);
-    }
   }
 }
