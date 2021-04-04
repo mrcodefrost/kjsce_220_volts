@@ -1,7 +1,14 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:kjsce_220_volts/screens/kj_form.dart';
+import 'package:kjsce_220_volts/screens/kj_guidelines.dart';
 
-class WelcomeScreen extends StatelessWidget {
+class WelcomeScreen extends StatefulWidget {
+  @override
+  _WelcomeScreenState createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,11 +68,27 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             SizedBox(height: 50),
-            ScreenCardsRight(
-                imagePath: 'assets/form.png', message: 'FILL DETAILS'),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => FormScreen()));
+                });
+              },
+              child: ScreenCardsRight(
+                  imagePath: 'assets/form.png', message: 'FILL DETAILS'),
+            ),
             SizedBox(height: 30.0),
-            ScreenCardsRight(
-                imagePath: 'assets/guidelines.png', message: 'GUIDELINES')
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => GuideLines()));
+                });
+              },
+              child: ScreenCardsRight(
+                  imagePath: 'assets/guidelines.png', message: 'GUIDELINES'),
+            ),
           ],
         ),
       ),
