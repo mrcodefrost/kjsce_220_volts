@@ -31,7 +31,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    SizedBox(height: 40.0),
+                    SizedBox(
+                      height: 40.0,
+                      width: 30,
+                    ),
                     TypewriterAnimatedTextKit(
                       text: [
                         'Crash Assistance & '
